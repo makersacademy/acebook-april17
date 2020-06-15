@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Message</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <body>
+          <tr>
+            <td>
+              <p><%= @post.message %></p>
+            </td>
+            <td>
+            <td><%= button_to "Edit", update_post_path(@post), { :method => :get } %></td>
+            </td>
+            <td>
+              <%= button_to "Delete", post_path(@post), :method => :delete %>
+            </td>
+          </tr>
+  </tbody>
+</table>
+
+
+<%= link_to posts_path do %>
+   All posts
+<% end %>
