@@ -13,3 +13,50 @@
  *= require_tree .
  *= require_self
  */
+ /* Rules... */
+ @font-face {
+     font-family: 'Parisian';
+     src: url('../fonts/Parisian-Normal-webfont.woff') format('woff');
+
+     font-weight: normal;
+     font-style: normal;
+ }
+
+ /* Reset */
+ 	html, body, h1, h2, h3, h4, h5, h6, p, blockquote, ol, ul, li {
+     font-size: 100%;
+     margin: 0;
+     padding: 0;
+ }
+ /* Sane defaults */
+ body {
+     font-family: Arial, Verdana, Geneva, serif;
+     color: #000000;
+     background-color: #ffffff;
+ }
+
+ h1, h2, h3, h4, h5, h6 {
+     font-weight: normal;
+     color: #626868;
+     font-family: 'Parisian', Georgia, serif;
+ }
+
+ h2 {
+     font-size: 2em;
+     margin-bottom: 0.25em;
+ }
+
+ h3 {
+     font-size: 1.5em;
+ }
+
+ #fieldset {
+ 	label: 40%;
+ 	color: blue;
+ }
+
+textarea {
+  height: 60px;
+  width: 150px;
+  margin: 5px;
+}

@@ -1,0 +1,29 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %> - Wall
+      </h1>
+    </section>
+  </aside>
+</div>
+<div>
+  <%= form_for :post, url: "/#{@user.id}" do |form| %>
+    <%= form.label :message %>
+    <%= form.text_area :message %>
+    <%= form.hidden_field :wall_id, value: @user.id %>
+  <%= form.submit "Submit" %>
+  <% end %>
+</div>
+<% @posts.each do |post| %>
+  <div class="posts">
+    <% user = User.find(post.user_id) %>
+    <p><%= user.name %></p>
+    <p><%= post.message %></p>
+    <p><%= post.updated_at.strftime('%I:%M %p, %A, %b %d') %></p>
+    <%= link_to 'Edit', edit_post_path(post) %>
+    <%= link_to 'Delete', post_path(post), method: :delete %>
+  </div>
+<% end %>

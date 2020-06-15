@@ -1,7 +1,27 @@
-<% @posts.each do |post| %>
-  <p><%= post.message %></p>
-<% end %>
-
 <%= link_to new_post_path do %>
   New post
 <% end %>
+<br>
+
+
+  <% @posts.each do |post| %>
+    <div class="posts">
+    <% user = User.find(post.user_id) %>
+    <p><%= user.name %></p>
+    <p><%= post.message %></p>
+    <p><%= post.updated_at.strftime('%I:%M %p, %A, %b %d') %></p>
+    <%= link_to 'Edit', edit_post_path(post) %>
+    <%= link_to 'Delete', post_path(post), method: :delete %>
+    <%= link_to 'Comment', new_post_comment_path(post) %>
+    </div>
+      <% post.comments.each do |comment| %>
+      <div class='comment'>
+      <% commentor = User.find(comment.user_id) %>
+      <p><%= commentor.name %></p>
+      <p><%= comment.body %></p>
+      <p><%= comment.updated_at.strftime('%I:%M %p, %A, %b %d') %></p>
+      <%= link_to 'Edit', edit_post_comment_path(post, comment) %>
+      <%= link_to 'Delete', post_comment_path(post, comment), method: :delete %>
+      </div>
+      <% end %>
+  <% end %>
