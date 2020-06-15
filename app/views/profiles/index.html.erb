@@ -1,0 +1,79 @@
+<%= render 'shared/nav' %>
+
+<style>
+
+.card-img-left {
+  border-bottom-left-radius: calc(.25rem - 1px);
+  border-top-left-radius: calc(.25rem - 1px);
+  float: left;
+  padding-right: 1em;
+  margin-bottom: -1.25em;
+}
+
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <h2>My Friends (<%= @friends.size %>)</h2>
+        <% @friends.each do |friend| %>
+        <div class="card-img-left">
+          <% avatar = Avatar.find_by(username: friend.parent_friend) %>
+          <%= image_tag avatar.image.mini.url %>
+            </div>
+          <ul class="list-group list-group-flush">
+            <a href="<%=profile_url(User.find_by(username: friend.parent_friend)) %>"class="list-group-item list-group-item-action">  <%= friend.parent_friend  %></a>
+          </ul>
+        <% end %>
+        <br>
+        <h2>All Users </h2>
+      <% @users.each do |user| %>
+      <div class="card-img-left">
+        <% avatar = Avatar.find_by(username: user.username) %>
+        <%= image_tag avatar.image.mini.url %>
+          </div>
+        <ul class="list-group list-group-flush">
+          <a href="<%=profile_url(user) %>" class="list-group-item list-group-item-action">  <%= user.username %></a>
+        </ul>
+      <% end %>
+    </div>
+
+    <div class="col-sm">
+      <h2>Most Recent Posts</h2>
+      <% @posts.each do |post| %>
+      <div class="card-group">
+        <a href="<%=profile_url(User.find_by(username: post.poster_username)) %>" class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="card-img-left">
+            <% avatar = Avatar.find_by(username: post.poster_username) %>
+            <%= image_tag avatar.image.mini.url %>
+              </div>
+
+              <div class="d-flex justify-content-center">
+
+              <h5 class="mb-1 col-md-6">By <%= post.poster_username %></h5>
+              <small class="mb-1 col-md text-muted text-right">last updated: <%= localize(post.updated_at, :format => :short) %> </small>
+              </div>
+              <br>
+
+              <div class="list-group-item">
+                <p class="mb-1"><%= post.text %></p>
+              </div>
+
+          <div class="list-group-item py-0 list-group-item form-inline justify-content-center">
+          <div class="d-flex justify-content-center">
+
+
+        </div>
+      </div>
+
+
+
+
+
+        </a>
+      </div>
+      <br>
+      <% end %>
+    </div>
+  </div>
+</div>

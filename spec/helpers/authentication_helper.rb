@@ -1,0 +1,66 @@
+def generate_fake_users
+  visit "/"
+  click_link "Sign up"
+  fill_in "Firstname", with: "Paul"
+  fill_in "Lastname", with: "Kane"
+  fill_in "Username", with: "PaulKane12"
+  fill_in "Email", with: "paulkane@gmail.com"
+  fill_in "Password", with: "password"
+  fill_in "Password confirmation", with: "password"
+  click_button "Sign up"
+  click_link "My Page"
+  click_button "Change Profile Picture"
+  attach_file("Image", Rails.root + "app/assets/default.png")
+  click_button "Update Avatar"
+  click_link "My Page"
+  click_link "Logout"
+  visit "/"
+  click_link "Sign up"
+  fill_in "Firstname", with: "Ben"
+  fill_in "Lastname", with: "Smith"
+  fill_in "Username", with: "BenSmith12"
+  fill_in "Email", with: "bensmith@gmail.com"
+  fill_in "Password", with: "password"
+  fill_in "Password confirmation", with: "password"
+  click_button "Sign up"
+  click_link "My Page"
+  click_button "Change Profile Picture"
+  attach_file("Image", Rails.root + "app/assets/default.png")
+  click_button "Update Avatar"
+  click_link "My Page"
+  click_link "Home"
+end
+
+def sign_in_as_tester
+  visit "/"
+  click_link "Sign up"
+  fill_in "Firstname", with: "test"
+  fill_in "Lastname", with: "test"
+  fill_in "Username", with: "test"
+  fill_in "Email", with: "test@gmail.com"
+  fill_in "Password", with: "password"
+  fill_in "Password confirmation", with: "password"
+  click_button "Sign up"
+  click_link "My Page"
+  click_button "Change Profile Picture"
+  attach_file("Image", Rails.root + "app/assets/default.png")
+  click_button "Update Avatar"
+  click_link "My Page"
+end
+
+def sign_up_as_ben
+  visit "/"
+  click_link "Sign up"
+  fill_in "Firstname", with: "Ben"
+  fill_in "Lastname", with: "Smith"
+  fill_in "Username", with: "BenSmith12"
+  fill_in "Email", with: "bensmith@gmail.com"
+  fill_in "Password", with: "password"
+  fill_in "Password confirmation", with: "password"
+  click_button "Sign up"
+  click_link "My Page"
+  click_button "Change Profile Picture"
+  attach_file("Image", Rails.root + "app/assets/default.png")
+  click_button "Update Avatar"
+  click_link "My Page"
+end

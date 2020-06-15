@@ -1,0 +1,2 @@
+class Bio < ApplicationRecord
+end

@@ -1,0 +1,42 @@
+<%= render 'shared/nav' %>
+<!-- navigation bar -->
+<style>
+  .col-center-block {
+    float: none;
+    display: block;
+    margin: 0 auto;
+}
+</style>
+
+
+<div class="row">
+  <div class="col-sm">
+    </div>
+    <div class="col-sm">
+      <h1>Edit your bio</h1>
+
+      <%= form_for @bio, url: profile_bio_path(@profile, @bio), method: :patch do |f| %>
+      <div class="form-group">
+        <%= f.label :age %>
+        <%= f.number_field :age, :class => 'form-control' %>
+      </div>
+      <div class="form-group">
+
+        <%= f.label :bio %>
+        <%= f.text_area :bio, :class => 'form-control' %>
+      </div>
+      <div class="form-group">
+
+        <%= f.label :location %>
+        <%= f.text_field :location, :class => 'form-control' %>
+      </div>
+
+        <%= f.hidden_field :bio_username, :value => current_user.username %>
+        <%= f.submit "Update", :class => "btn btn-primary col-center-block" %>
+      <% end %>
+
+      </div>
+      <div class="col-sm">
+        </div>
+
+      </div>

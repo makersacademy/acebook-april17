@@ -1,0 +1,55 @@
+<%= render 'shared/nav' %>
+
+<style>
+  .col-center-block {
+    float: none;
+    display: block;
+    margin: 0 auto;
+}
+</style>
+
+
+
+<div class="row">
+  <div class="col-md-7 brd col-center-block">
+    <div style="text-align: center">
+    <a class="navbar-brand center-block" href="<%= profile_url(@profile) %>" style="text-align:center">Back to <%=@profile.username%>'s profile</a>
+    </div>
+    <br>
+    <div class="card-group">
+      <a class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">By <%= @post.poster_username %></h5>
+          <small class="text-muted">last updated: <%= localize(@post.updated_at, :format => :short) %> </small>
+        </div>
+        <p class="mb-1"><%= @post.text %></p>
+        <small class="text-muted">Comments (<%= @post.comments.size %>) - Like - Edit - Delete</small>
+      </a>
+    </div>
+
+     <br>
+     <br>
+    Leave a comment:
+    <br>
+    <%= form_for @comment, url: create_comment_path([:post_id]) do |f| %>
+    <div class="input-group">
+      <textarea class="form-control" <%= f.text_area :text %></textarea>
+      <%= f.hidden_field :post_id, :value => @post.id %>
+      <div class="input-group-append">
+        <button <% f.submit%> class="input-group-text" >submit</button>
+      </div>
+    </div>
+    <% end %>
+    <br>
+    -- COMMENTS --
+    <% @comments.each do |comment| %>
+    <ul class="list-group">
+      <li class="list-group-item"><%= comment.text %>
+        <div class="d-flex w-100 justify-content-between">
+          <small class="text-muted">Comment by: <%= comment.username %></small>
+        </div>
+      </li>
+    </ul>
+    <% end %>
+  </div>
+</div>

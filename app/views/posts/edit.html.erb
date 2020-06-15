@@ -1,0 +1,32 @@
+<%= render 'shared/nav' %>
+<!-- navigation bar -->
+<style>
+  .col-center-block {
+    float: none;
+    display: block;
+    margin: 0 auto;
+}
+</style>
+
+
+<div class="row">
+  <div class="col-sm">
+    </div>
+    <div class="col-sm">
+      <h1>Edit your post</h1>
+      <br>
+
+      <%= form_for @post, url: profile_post_path  do |f| %>
+      <div class="form-group">
+        Your Message:
+        <%= f.text_area :text, :class => 'form-control' %>
+      </div>
+
+        <%= f.submit "Update", :class => "btn btn-primary col-center-block" %>
+      <% end %>
+
+      </div>
+      <div class="col-sm">
+        </div>
+
+      </div>
