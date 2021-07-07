@@ -7,7 +7,7 @@ _The following is only a suggestion. This process tries to mirror as closely as 
 #### 1. Planning Session
 Have a planning session where you choose a number of unestimated tickets in `Unestimated`
   - Estimate the complexity of the tickets, perhaps using [story points](https://www.atlassian.com/agile/project-management/estimation) and note it on the cards
-  - If the task is to big, split it into smaller cards, and estimate those.
+  - If the task is too big, split it into smaller cards, and estimate those.
   - Decide, given your team's resources and the estimations on the cards, how many tasks/points the team can reasonably achieve in 2 days.
   - Move these  estimated cards into `To Do`
 
